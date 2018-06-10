@@ -9,5 +9,5 @@ rdd2 = sc.parallelize([""])
 # Transform
 print(rdd2)
 # action
-# TODO 
+# TODO
 print(rdd2.count())
