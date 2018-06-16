@@ -33,7 +33,7 @@ df.write.bucketBy(42, "name").sortBy("age").saveAsTable("people_bucketed")
 df = spark.sql("SELECT * FROM parquet.`data/users.parquet`")
 df.show()
 
-df.write.partitionBy("favorite_color").format("parquet").save("namesPartByColor.parquet")
+#df.write.partitionBy("favorite_color").format("parquet").save("namesPartByColor.parquet")
 
 
 df = spark.read.parquet("data/users.parquet")
