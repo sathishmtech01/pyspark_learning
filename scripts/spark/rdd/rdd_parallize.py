@@ -11,3 +11,6 @@ print(rdd2)
 # action
 # TODO
 print(rdd2.count())
+def test():
+
+    return 10

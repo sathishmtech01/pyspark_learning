@@ -1,1 +1,16 @@
 http://adataanalyst.com/spark/web-server-log-analysis-spark/
+# RDD - data structure
+# Resilient distrbuted dataset
+# The data is distributed across the server|cluster(group of server)
+# Example : 3 machine - 50,50,50 GB disk - and we have 100gb dataset
+  -- cluster we can put 100 gb
+  -- not in single server
+# Real time streaming data comes in rdd format to process
+
+# Processing
+
+RDD and then dataframe
+
+
+# Dataframe - SQL kind of operations
+# mostly Batch data prcess comes in rdd format to process
