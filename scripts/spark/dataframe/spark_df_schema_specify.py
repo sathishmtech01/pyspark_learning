@@ -15,14 +15,17 @@ sc = spark.sparkContext
 lines = sc.textFile("data/people.txt")
 parts = lines.map(lambda l: l.split(","))
 # Each line is converted to a tuple.
-people = parts.map(lambda p: (p[0], p[1].strip()))
-
+people = parts.map(lambda p: (p[0], int(p[1].strip())))
+print(people.collect())
 # The schema is encoded in a string.
 schemaString = "name age"
-
+print(schemaString)
 fields = [StructField(field_name, StringType(), True) for field_name in schemaString.split()]
-schema = StructType(fields)
 
+fields = [StructField("name", StringType(), True),StructField("age", IntegerType(), True)]
+print(fields)
+schema = StructType(fields)
+print(schema)
 # Apply the schema to the RDD.
 schemaPeople = spark.createDataFrame(people, schema)
 

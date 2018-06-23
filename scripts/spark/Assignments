@@ -1,0 +1,11 @@
+# data is in
+data/titanic.csv
+
+https://medium.com/makemytrip-engineering
+
+The below report on based on the titanic dataset
+
+1.find the survival anaysis - get count
+2. based on the Pclass howmany are survived or not count
+3. based on the sex howmany are survived r not count
+4. based on pclass, sex howmany are survived or not count

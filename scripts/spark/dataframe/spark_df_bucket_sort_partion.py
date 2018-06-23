@@ -12,6 +12,7 @@ print(spark)
 # Generic Load/Save Functions
 df = spark.read.load("data/users.parquet")
 df.show()
+df.printSchema()
 #df.select("name", "favorite_color").write.save("namesAndFavColors.parquet")
 
 # Manually Specifying Options
@@ -24,7 +25,7 @@ df = spark.read.load("data/people.json", format="json")
 df = spark.read.load("data/people.csv",format="csv", sep=",", inferSchema="true", header="true")
 df.show()
 
-
+# Bucketing
 print("Hello")
 df.write.bucketBy(42, "name").sortBy("age").saveAsTable("people_bucketed")
 
@@ -37,6 +38,7 @@ df.show()
 
 
 df = spark.read.parquet("data/users.parquet")
+df
 (df
     .write
     .partitionBy("favorite_color")

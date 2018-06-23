@@ -8,6 +8,7 @@
 5.https://www.tutorialspoint.com/pyspark
 6.https://www.dezyre.com/apache-spark-tutorial/pyspark-tutorial
 7.http://www.kirupagaran.com/images/free_downloads/Apache_Spark_Programming_Cheat_Sheet.pdf
+8. https://medium.com/makemytrip-engineering
 
 **PySpark Configuration**
 1. Open Pycharm
