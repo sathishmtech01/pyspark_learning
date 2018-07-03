@@ -3,21 +3,23 @@ from pyspark import SparkConf,SparkContext
 
 # initialization of spark
 # master is machine | server allooting
-sc = SparkContext(master = 'local[1]')
+sc = SparkContext(master = 'local[2]')
+print(sc)
+
 #
 # # spark version
-# print(sc.version)
+print(sc.version)
 # # python version
-# print(sc.pythonVer)
+print(sc.pythonVer)
 # #
-# print(sc.master)
-# print(str(sc.sparkHome))
-# print(str(sc.sparkUser()))
+print(sc.master)
+print(str(sc.sparkHome))
+print(str(sc.sparkUser()))
 #
-# print(sc.appName) # Return application name
-# print(sc.applicationId) # Retrieve application ID
-# print(sc.defaultParallelism) # Return default level of parallelism
-# print(sc.defaultMinPartitions)
+print(sc.appName) # Return application name
+print(sc.applicationId) # Retrieve application ID
+print(sc.defaultParallelism) # Return default level of parallelism
+print(sc.defaultMinPartitions)
 
 
 config = (SparkConf().

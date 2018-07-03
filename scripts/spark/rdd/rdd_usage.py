@@ -13,7 +13,8 @@ data = sc.textFile("data/input/house/2018-05-12_*.csv")
 
 # MapPartitionsRDD
 # data is converted to RDD and just giving the information
-print(data)
+#print(data.collect())
+
 # array of string data
 #print(data.collect())
 
@@ -31,8 +32,8 @@ def string_to_int(val):
 
 # Module getting the count
 def count(x):
-    print(x)
-    print(list(x))
+    #print(x)
+    #print(list(x))
     #input()
     temp=0
     for val in list(x):
@@ -45,7 +46,6 @@ def count(x):
 # header
 # address,city,state,zip,price,sqft,bedrooms,bathrooms,days_on_zillow,sale_type,url
 header = data.first()
-
 # extracting the header of data
 print(header)#extract header
 
@@ -53,11 +53,27 @@ print(header)#extract header
 # transform : map and groupby
 # coalesce 1 - denoting the number of partition data
 
+step1 = data.filter(lambda line: line != header)
+print(step1.collect())
+
+step2 = step1.map(lambda line: line.split(","))
+print(step2.collect())
+
+step3 = step2.map(lambda x: ((x[1]), string_to_int(x[5])))
+input(step3.collect())
+
+
+
+
+
 print(data.filter(lambda line: line != header).
       map(lambda line: line.split(",")).map(
     lambda x: ((x[1]), string_to_int(x[5]))).
-    groupBy(lambda x: x[0]).map(lambda x: (count(x[1]))).
+      groupBy(lambda x: x[0]).
+        map(lambda x: (count(x[1]))).
       collect())
+
+
 input()
 
 get_count = data.filter(lambda line: line != header).\

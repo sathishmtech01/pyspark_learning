@@ -1,0 +1,4 @@
+{"stream":{"host":"localhost","port":9999},
+"data":{"types":["onnet","offnet","crossnet","international","recharge","data"]},
+"customer_number":{"start":"812360","zfill":4,"min":0,"max":1000},
+"cellsite_id":{"start":"cellsite_","zfill":4,"min":0,"max":100}}
