@@ -14,7 +14,12 @@ if __name__ == '__main__':
     kvs = KafkaUtils.createDirectStream(ssc, [topic],{"metadata.broker.list": brokers})
     lines = kvs.map(lambda x: x[1])
     lines.pprint()
-    lines.saveAsTextFiles("data/output")
-    print("h")
+    #hdfs://localhost:9000/test
+    # save in local
+    #lines.saveAsTextFiles("data/output")
+
+    # save in hdfs
+    lines.saveAsTextFiles("hdfs://localhost:9000/test")
+
     ssc.start()
     ssc.awaitTermination()

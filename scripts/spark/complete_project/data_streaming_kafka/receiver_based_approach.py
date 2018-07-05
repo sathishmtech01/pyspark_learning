@@ -14,8 +14,12 @@ if __name__ == '__main__':
     kvs = KafkaUtils.createStream(ssc,broker,"streaming-consumer",{topic:1})
     lines = kvs.map(lambda x: x[1])
     lines.pprint()
-    # print(lines)
-    # counts = lines.flatMap(lambda line: line.split(" ")).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a+b)
-    # counts.pprint()
+    # hdfs://localhost:9000/test
+    # save in local
+    # lines.saveAsTextFiles("data/output")
+
+    # save in hdfs
+    lines.saveAsTextFiles("hdfs://localhost:9000/test")
+
     ssc.start()
     ssc.awaitTermination()
