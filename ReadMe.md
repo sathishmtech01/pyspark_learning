@@ -10,6 +10,10 @@
 7.http://www.kirupagaran.com/images/free_downloads/Apache_Spark_Programming_Cheat_Sheet.pdf
 8. https://medium.com/makemytrip-engineering
 
+Cloudera not opening solved:
+
+https://amiduos.com/support/knowledge-base/article/enabling-virtualization-in-lenovo-systems
+
 **PySpark Configuration**
 1. Open Pycharm
     - File

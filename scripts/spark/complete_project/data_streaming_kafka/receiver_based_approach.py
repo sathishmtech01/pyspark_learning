@@ -7,19 +7,26 @@ os.environ['PYSPARK_SUBMIT_ARGS'] = '--packages org.apache.spark:spark-streaming
 
 
 if __name__ == '__main__':
+    def test(x):
+        #print(x.flatMap(lambda x:x.split('|')))
+        x = x.map(lambda x:x[1])
+        x.saveAsTextFiles("hdfs://localhost:9000/user/sathish/test")
+        print("Hello")
 
     sc = SparkContext(appName="PythonStreamingRecieverKafkaWordCount")
     ssc = StreamingContext(sc, 2) # 2 second window
     broker, topic = "localhost:2181","my-topic"
     kvs = KafkaUtils.createStream(ssc,broker,"streaming-consumer",{topic:1})
     lines = kvs.map(lambda x: x[1])
+    #lines.foreachRDD(lambda x:test(x))
     lines.pprint()
     # hdfs://localhost:9000/test
     # save in local
     # lines.saveAsTextFiles("data/output")
 
     # save in hdfs
-    lines.saveAsTextFiles("hdfs://localhost:9000/test")
+    #lines.foreachRDD()
+    lines.saveAsTextFiles("hdfs://localhost:9000/user/sathish/test/")
 
     ssc.start()
     ssc.awaitTermination()

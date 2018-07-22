@@ -19,7 +19,7 @@ if __name__ == '__main__':
     #lines.saveAsTextFiles("data/output")
 
     # save in hdfs
-    lines.saveAsTextFiles("hdfs://localhost:9000/test")
+    lines.saveAsTextFiles("hdfs://localhost:9000/user/sathish/test")
 
     ssc.start()
     ssc.awaitTermination()

@@ -1,0 +1,10 @@
+(BOL) sathish@sathish-Latitude-3480:~/Sathish/BOL/scripts/spark/complete_project/scheduling_oozie/test_project$ cd /home/sathish/Sathish/BOL/scripts/spark/complete_project/scheduling_oozie/test_project
+(BOL) sathish@sathish-Latitude-3480:~/Sathish/BOL/scripts/spark/complete_project/scheduling_oozie/test_project$ ls -l
+total 24
+-rw-rw-r-- 1 sathish sathish 457 Jul  9 14:39 job.properties
+-rw-r--r-- 1 sathish sathish   8 Jul  8 00:03 output
+-rw-rw-r-- 1 sathish sathish  76 Jul 11 10:53 run
+-rw-rw-r-- 1 sathish sathish  50 Jul  9 14:29 sample.sh
+-rw-rw-r-- 1 sathish sathish  37 Jul  9 17:07 sample.sh.save
+-rw-rw-r-- 1 sathish sathish 694 Jul  9 16:19 workflow.xml
+(BOL) sathish@sathish-Latitude-3480:~/Sathish/BOL/scripts/spark/complete_project/scheduling_oozie/test_project$ oozie job -oozie http://localhost:11000/oozie -config   job.properties -run

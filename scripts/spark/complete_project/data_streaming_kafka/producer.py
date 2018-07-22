@@ -34,6 +34,7 @@ def data_streaming(config_path):
                random.choice(types) + "," + \
                str(random.randint(10, 1000))
 
+
         data = data.encode()
         #data = "Hello world saaaathish\n".encode()
         producer.send_messages(topic, data)

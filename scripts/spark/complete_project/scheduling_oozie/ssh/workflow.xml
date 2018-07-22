@@ -1,0 +1,19 @@
+<!--******************************************-->
+<!--workflow.xml -->
+<!--******************************************-->
+<workflow-app name="DemoSshAction" xmlns="uri:oozie:workflow:0.1">
+ <start to="sshAction"/>
+ <action name="sshAction">
+ <ssh xmlns="uri:oozie:ssh-action:0.1">
+ <host>${remoteNode}</host>
+ <command>${shellScriptPath}</command>
+ <capture-output/>
+ </ssh>
+<ok to="end"/>
+ <error to="fail"/>
+ </action>
+ <kill name="fail">
+ <message>"Killed job due to error"</message>
+ </kill>
+ <end name="end"/>
+</workflow-app>

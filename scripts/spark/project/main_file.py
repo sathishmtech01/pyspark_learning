@@ -58,16 +58,16 @@ print(data.filter(lambda line: line != header).
     lambda x: ((x[1]), string_to_int(x[5]))).
     groupBy(lambda x: x[0]).map(lambda x: (count(x[1]))).
       collect())
-input()
+#input()
 
 get_count = data.filter(lambda line: line != header).\
             map(lambda line: line.split(",")).map(
     lambda x: ((x[1]), string_to_int(x[5]))).\
     groupBy(lambda x: x[0]).\
     map(lambda x: (count(x[1]))).coalesce(1)
-
+print(get_count)
 # save as text file
-#get_count.saveAsTextFile("data/output2")
+#get_count.saveAsTextFile("data/output23")
 
 # see all the data
 # action : collect and count
