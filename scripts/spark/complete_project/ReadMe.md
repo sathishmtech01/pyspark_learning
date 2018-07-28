@@ -12,3 +12,8 @@ Step 1 : Kafka Streaming data
 Step 2 : Spark receiveing the kafka streams
 Step 3 : Storing the data in hdfs
 Step 4 : Spark ETL operations, Hive, Pig
+
+
+ETL operations using Hive, Pig and 
+Data injection Sqoop from rdbms -> hdfs and from hdfs -> rdbms
+

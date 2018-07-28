@@ -1,0 +1,29 @@
+sqoop import \
+--connect jdbc:mysql://localhost/telcom \
+--username root \
+--password New@1234 \
+--table telcom_usage \
+--m 1 \
+--target-dir "hdfs://localhost:9000/user/sathish/tel_output/sqoop_out"
+
+
+
+sqoop import \
+--connect jdbc:mysql://localhost/telcom \
+--username root \
+--password New@1234 \
+--table telcom_usage \
+--m 1 \
+--incremental append \
+--check-column value \
+-last value 131
+
+
+# Export data
+
+sqoop export \
+--connect jdbc:mysql://localhost/telcm \
+--username root \
+--password New@1234 \
+--table telcom_usage \
+--export-dir "hdfs://localhost:9000/user/sathish/tel_output/sqoop_out/*"

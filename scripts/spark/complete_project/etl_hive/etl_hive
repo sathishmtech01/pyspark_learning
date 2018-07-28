@@ -1,0 +1,71 @@
+hive> create database telcom;
+OK
+Time taken: 1.171 seconds
+hive> show databases;
+OK
+default
+telcom
+Time taken: 0.459 seconds, Fetched: 2 row(s)
+hive> use telcom;
+OK
+Time taken: 0.03 seconds
+hive> create table telcom_usage(cell_site STRING, phone_no STRING,type STRING, value INT) row format delimited fields terminated by ',' stored as textfile;
+OK
+Time taken: 1.222 seconds
+hive> describe telcom_usage
+    > ;
+OK
+cell_site           	string
+phone_no            	string
+type                	string
+value               	int
+Time taken: 0.411 seconds, Fetched: 4 row(s)
+hive> LOAD DATA INPATH 'hdfs://localhost:9000/user/sathish/test/*/*' INTO TABLE telcom_usage;
+Loading data to table telcom.telcom_usage
+OK
+Time taken: 0.825 seconds
+hive> select * from telcom_usage;
+OK
+cellsite_0037	8123600095	data	127
+cellsite_0087	8123600021	international	588
+cellsite_0028	8123600057	data	246
+cellsite_0074	8123600986	recharge	82
+Time taken: 1.644 seconds, Fetched: 4 row(s)
+hive> select cell_site,type,sum(value) from telcom_usage group by cell_site,type;
+WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Query ID = sathish_20180728003317_e0953a47-74ed-4399-8929-fd207e3911f6
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1532712798740_0008, Tracking URL = http://sathish-Latitude-3480:8088/proxy/application_1532712798740_0008/
+Kill Command = /home/sathish/hadoop-2.8.4/bin/hadoop job  -kill job_1532712798740_0008
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2018-07-28 00:33:23,342 Stage-1 map = 0%,  reduce = 0%
+2018-07-28 00:33:28,683 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.59 sec
+2018-07-28 00:33:32,906 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.7 sec
+MapReduce Total cumulative CPU time: 3 seconds 700 msec
+Ended Job = job_1532712798740_0008
+MapReduce Jobs Launched:
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.7 sec   HDFS Read: 9578 HDFS Write: 239 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 700 msec
+OK
+cellsite_0028	data	246
+cellsite_0037	data	127
+cellsite_0074	recharge	82
+cellsite_0087	international	588
+Time taken: 17.052 seconds, Fetched: 4 row(s)
+hive> A
+
+
+# run in terminal
+
+hive -e "select cell_site,type,sum(value) from telcom_usage group by cell_site,type;
+" > "hdfs://localhost:9000/user/sathish/tel_output/hive_out"
+
+INSERT OVERWRITE DIRECTORY "hdfs://localhost:9000/user/sathish/tel_output/hive_out" select cell_site,type,sum(value) from telcom_usage group by cell_site,type;

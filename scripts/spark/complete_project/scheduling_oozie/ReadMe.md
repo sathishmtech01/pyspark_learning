@@ -14,3 +14,21 @@ java version "1.8.0_161"
 Java(TM) SE Runtime Environment (build 1.8.0_161-b12)
 Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)
 
+Issue:
+2018-07-27 23:37:42,488 [main] INFO  org.apache.hadoop.ipc.Client - Retrying connect to server: localhost/127.0.0.1:10020. Already tried 9 time(s); retry policy is RetryUpToMaximumCountWithFixedSleep(maxRetries=10, sleepTime=1000 MILLISECONDS)
+
+turn off ipv6 in /etc/sysconfig/network or /etc/sysconfif/network-manager/ifcfg-eth0
+
+parameter
+
+NETWORKING_IPV6=no
+
+IPV6INIT=no
+
+Please check selniux is disable or not if not then disable it and reboot.
+
+vi /etc/sysconfig/selinux
+
+selinux=disabled
+
+Also check ntp and iptable and firewall.

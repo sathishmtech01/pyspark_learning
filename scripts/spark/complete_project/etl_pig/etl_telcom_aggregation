@@ -1,0 +1,4 @@
+data = LOAD 'hdfs://localhost:9000/user/sathish/test-153215753*/*' USING PigStorage (',') AS (cell_site:chararray, phone_no:chararray,type:chararray, value:int);
+grouping = GROUP data BY (cell_site, type);
+aggregate = FOREACH grouping GENERATE FLATTEN(group) AS (cell_site, type),SUM(data.value) AS value;
+STORE aggregate INTO 'hdfs://localhost:9000/user/sathish/tel_output/pig_out1' using PigStorage(',');
