@@ -4,7 +4,7 @@ sqoop import \
 --password New@1234 \
 --table telcom_usage \
 --m 1 \
---target-dir "hdfs://localhost:9000/user/sathish/tel_output/sqoop_out"
+--target-dir "hdfs://localhost:9000/user/sathish/tel_output/sqoop_out1"
 
 
 

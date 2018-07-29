@@ -9,10 +9,11 @@ https://m.facebook.com/notes/andreas-kretz/everything-you-need-to-know-to-become
 
 
 Step 1 : Kafka Streaming data
-Step 2 : Spark receiveing the kafka streams
+Step 2 : Spark receiveing the kafka streams, storing data to rdbms
 Step 3 : Storing the data in hdfs
 Step 4 : Spark ETL operations, Hive, Pig
 
+Sqoop Injection: 
 
 ETL operations using Hive, Pig and 
 Data injection Sqoop from rdbms -> hdfs and from hdfs -> rdbms

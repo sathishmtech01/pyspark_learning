@@ -23,8 +23,7 @@ Time taken: 0.411 seconds, Fetched: 4 row(s)
 hive> LOAD DATA INPATH 'hdfs://localhost:9000/user/sathish/test/*/*' INTO TABLE telcom_usage;
 Loading data to table telcom.telcom_usage
 OK
-Time taken: 0.825 seconds
-hive> select * from telcom_usage;
+Time taken: 0.825 se
 OK
 cellsite_0037	8123600095	data	127
 cellsite_0087	8123600021	international	588
@@ -68,4 +67,4 @@ hive> A
 hive -e "select cell_site,type,sum(value) from telcom_usage group by cell_site,type;
 " > "hdfs://localhost:9000/user/sathish/tel_output/hive_out"
 
-INSERT OVERWRITE DIRECTORY "hdfs://localhost:9000/user/sathish/tel_output/hive_out" select cell_site,type,sum(value) from telcom_usage group by cell_site,type;
+INSERT OVERWRITE DIRECTORY "hdfs://localhost:9000/user/sathish/tel_output/hive_out1" select cell_site,type,sum(value) from telcom_usage group by cell_site,type;
