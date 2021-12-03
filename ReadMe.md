@@ -24,3 +24,9 @@ https://amiduos.com/support/knowledge-base/article/enabling-virtualization-in-le
                         - Add the python libraries - py*.zip,pyspark.zip
     
 
+
+
+
+csk@csk-ai-revolution:~/sparkscala/spark-2.4.0-bin-hadoop2.6/bin$ export PYSPARK_PYTHON=/home/csk/anaconda/envs/face/bin/python
+csk@csk-ai-revolution:~/sparkscala/spark-2.4.0-bin-hadoop2.6/bin$ ./pyspark
+It will open pyspark in command prompt

@@ -2,11 +2,10 @@ import requests
 import sys
 import os
 from pyspark import SparkConf,SparkContext
-os.environ['SPARK_HOME'] = "/usr/lib/spark"
+os.environ['SPARK_HOME'] = "/home/csk/sparkscala/spark-2.4.0-bin-hadoop2.6/"
 
 # Spark Content
-conf = SparkConf().setMaster("local").setAppName("puspark")
-sc = SparkContext(conf=conf)
+sc = SparkContext(master = 'local[2]')
 print(sc)
 
 # data download

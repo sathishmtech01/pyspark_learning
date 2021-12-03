@@ -1,5 +1,6 @@
 from pyspark import SparkConf,SparkContext
-
+import os
+os.environ['SPARK_HOME'] = "/home/csk/sparkscala/spark-2.4.0-bin-hadoop2.6/"
 # initialization of spark
 # master is machine | server allooting
 sc = SparkContext(master = 'local[1]')

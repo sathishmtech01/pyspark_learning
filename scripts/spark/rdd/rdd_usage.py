@@ -1,9 +1,16 @@
-from pyspark import SparkConf,SparkContext
-import sys
+from random import random
+import os
+from pyspark.sql import SparkSession
+os.environ['SPARK_HOME'] = "/home/csk/sparkscala/spark-2.4.0-bin-hadoop2.6/"
 
 # initialization of spark
 # master is machine | server allooting
-sc = SparkContext(master = 'local[1]')
+spark_session = SparkSession.builder.master("local").\
+        appName("SparkApplication").\
+        config("spark.driver.bindAddress","localhost").\
+        config("spark.ui.port","4041").\
+        getOrCreate()
+sc = spark_session.sparkContext
 
 # Reading a single csv file
 data = sc.textFile("data/input/house/2018-05-12_154616.csv")
@@ -74,7 +81,6 @@ print(data.filter(lambda line: line != header).
       collect())
 
 
-input()
 
 get_count = data.filter(lambda line: line != header).\
             map(lambda line: line.split(",")).map(
@@ -88,6 +94,6 @@ get_count = data.filter(lambda line: line != header).\
 # see all the data
 # action : collect and count
 print(get_count.collect())
-print(get_count.count())
-# get count of data
-print(data.count())
+# print(get_count.count())
+# # get count of data
+# print(data.count())
