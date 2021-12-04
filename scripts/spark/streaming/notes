@@ -1,0 +1,16 @@
+Linux
+Run in terminal1
+Send/Receive:
+$nc -lk 9999
+Run in terminal2
+Send/Receive:
+$nc localhost 9999
+
+run word_count.py
+
+
+Windows: (need to verify)
+download netcat https://eternallybored.org/misc/netcat/
+https://www.youtube.com/watch?v=1FxsjlulkDA
+nc -l -p 9999
+nc localhost 9999

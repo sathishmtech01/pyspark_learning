@@ -1,6 +1,7 @@
 from pyspark import SparkConf,SparkContext
 import sys
-
+import os
+os.environ['SPARK_HOME'] = "/home/csk/sparkscala/spark-2.4.0-bin-hadoop2.6/"
 # initialization of spark
 # master is machine | server allooting
 sc = SparkContext(master = 'local[1]')
@@ -31,8 +32,8 @@ def string_to_int(val):
 
 # Module getting the count
 def count(x):
-    print(x)
-    print(list(x))
+    # print(x)
+    # print(list(x))
     #input()
     temp=0
     for val in list(x):
@@ -53,11 +54,11 @@ print(header)#extract header
 # transform : map and groupby
 # coalesce 1 - denoting the number of partition data
 
-print(data.filter(lambda line: line != header).
-      map(lambda line: line.split(",")).map(
-    lambda x: ((x[1]), string_to_int(x[5]))).
-    groupBy(lambda x: x[0]).map(lambda x: (count(x[1]))).
-      collect())
+# print(data.filter(lambda line: line != header).
+#       map(lambda line: line.split(",")).map(
+#     lambda x: ((x[1]), string_to_int(x[5]))).
+#     groupBy(lambda x: x[0]).map(lambda x: (count(x[1]))).
+#       collect())
 #input()
 
 get_count = data.filter(lambda line: line != header).\
@@ -65,7 +66,8 @@ get_count = data.filter(lambda line: line != header).\
     lambda x: ((x[1]), string_to_int(x[5]))).\
     groupBy(lambda x: x[0]).\
     map(lambda x: (count(x[1]))).coalesce(1)
-print(get_count)
+print("Hello")
+# print(get_count)
 # save as text file
 #get_count.saveAsTextFile("data/output23")
 

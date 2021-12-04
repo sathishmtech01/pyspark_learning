@@ -1,4 +1,7 @@
 from pyspark.sql import Row,SparkSession
+import os
+os.environ['SPARK_HOME'] = "/home/csk/sparkscala/spark-2.4.0-bin-hadoop2.6/"
+
 spark = SparkSession \
     .builder \
     .appName("Python Spark SQL basic example") \

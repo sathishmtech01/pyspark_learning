@@ -37,15 +37,14 @@ df = spark.sql("SELECT * FROM parquet.`data/users.parquet`")
 df.show()
 
 
-df = spark.sql("SELECT * FROM parquet.`namesAndAges.parquet`")
-df1 = spark.sql("SELECT * FROM parquet.`spark-warehouse/people_partitioned_bucketed_test/name=Andy/*.parquet`")
-print("Spark warehouse")
-df1.show()
+# df = spark.sql("SELECT * FROM parquet.`namesAndAges.parquet`")
+# df1 = spark.sql("SELECT * FROM parquet.`spark-warehouse/people_partitioned_bucketed_test/name=Andy/*.parquet`")
+# print("Spark warehouse")
+# df1.show()
 #df.write.partitionBy("favorite_color").format("parquet").save("namesPartByColor.parquet")
 
 df = spark.read.parquet("data/users.parquet")
 df.show()
-input()
 (df
     .write
     .partitionBy("favorite_color")
