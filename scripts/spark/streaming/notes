@@ -14,3 +14,6 @@ download netcat https://eternallybored.org/misc/netcat/
 https://www.youtube.com/watch?v=1FxsjlulkDA
 nc -l -p 9999
 nc localhost 9999
+
+/home/csk/sparkscala/spark-2.4.0-bin-hadoop2.6/bin/spark-submit /home/csk/PycharmProjects/git/pyspark_learning/scripts/spark/streaming/word_count.py
+

@@ -46,7 +46,6 @@ print(spark)
 print("Test")
 spark_new = spark.newSession()
 print(spark_new)
-print()
 spark_new.sql("SELECT * FROM global_temp.people").show()
 # error
 #spark.newSession().sql("SELECT * FROM people").show()
