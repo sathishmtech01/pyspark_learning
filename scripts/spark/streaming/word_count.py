@@ -4,6 +4,8 @@ from pyspark import SparkContext
 from pyspark.streaming import StreamingContext
 import os
 os.environ['SPARK_HOME'] = "/home/csk/sparkscala/spark-2.4.0-bin-hadoop2.6/"
+import time
+
 if __name__ == "__main__":
     # uncomment while running in terminal
     # `$ bin/spark-submit examples/src/main/python/streaming/network_wordcount.py localhost 9999`
@@ -17,9 +19,12 @@ if __name__ == "__main__":
     ssc = StreamingContext(sc, 10)
 
     lines = ssc.socketTextStream(hostname, port)
-    counts = lines.flatMap(lambda line: line.split(" "))\
-                  .map(lambda word: (word, 1))\
-                  .reduceByKey(lambda a, b: a+b)
-    counts.pprint()
+    # counts = lines.flatMap(lambda line: line.split(" "))\
+    #               .map(lambda word: (word, 1))\
+    #               .reduceByKey(lambda a, b: a+b)
+    ts = time.time()
+    rdd1 = lines.map(lambda line: line.split(","))
+    rdd1.saveAsTextFiles("streaming_op/test_" + str(ts))
+    rdd1.pprint()
     ssc.start()
     ssc.awaitTermination()

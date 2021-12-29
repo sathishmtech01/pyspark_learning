@@ -6,6 +6,10 @@ import os
 os.environ['SPARK_HOME'] = "/home/csk/sparkscala/spark-2.4.0-bin-hadoop2.6/"
 from datetime import datetime
 now = datetime.now()
+import time
+ts = time.time()
+# ts stores the time in seconds
+
 # print("out_"+str(now))
 if __name__ == "__main__":
     # uncomment while running in terminal

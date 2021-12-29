@@ -1,0 +1,67 @@
+ETL using Pyspark
+
+Extract
+- Read input from different datasource - json,csv,parquet
+- from data structures - dataframe, array, others
+	
+Transform
+- Data preprocessing/cleaning
+- RDD - transformation - map,filter
+- Dataframe fuction - groupby,filter and so on
+
+Load
+- Store as file
+- store to DB
+
+Need to explain a bit more
+
+
+1. Telecom - churn data set
+	https://www.kaggle.com/blastchar/telco-customer-churn/codee	- 
+Load the data
+Data cleaning
+Exploratory data analysis
+Save analysis report 
+ 
+2. Sales - analysis
+	https://www.kaggle.com/kyanyoga/sample-sales-data
+Load the data
+Data cleaning
+Exploratory data analysis
+Save analysis report 
+
+3. Entertainment - netflix shows analytics
+https://www.kaggle.com/shivamb/netflix-shows
+
+4. Education-Campus recuritment
+https://www.kaggle.com/benroshan/factors-affecting-campus-placement?select=Placement_Data_Full_Class.csv
+
+5. Food 
+https://www.kaggle.com/borapajo/food-choices?select=food_coded.csv
+
+6. Entertainment - movie 
+https://www.kaggle.com/ayushjain001/movie-dataset-rating
+
+7. Amazon 
+https://www.kaggle.com/rishidamarla/amazoncom-fashion-products
+
+8. Articles
+
+The following tasks needs to be achieved while building a ML model
+shared for a task
+(i)  We need all the records in “Article_Description” and “Full_Article” to be cleaned.Remove the html tags
+
+(ii) Merge the columns “Heading”, “Article_Description” and “Full_Article” separated by space and place the merged text in a new column name “Preprocessed_Text”
+
+(iii) Remove stopwords and punctuation for all the records in the column  “Preprocessed_Text”
+
+(iv) Remove the leading or trailing whitespaces for all the records in the column  “Preprocessed_Text”
+
+
+9. RealEstate - Housing Data
+collected via python script from zillow
+
+10. Titanic - 
+have some link
+https://www.kaggle.com/jamesleslie/titanic-cleaned-data
+

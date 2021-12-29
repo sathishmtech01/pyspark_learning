@@ -29,7 +29,7 @@ df = spark_session.createDataFrame(pandas_df)
 
 
 print(df)
-print(df.show())
+df.show()
 df.show(1)
 df.show(1, vertical=True)
 

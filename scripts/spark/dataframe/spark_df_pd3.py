@@ -25,12 +25,15 @@ df = spark_session.createDataFrame([
 df.show()
 df.groupby('color').avg().show()
 
-df.groupby('color').avg().show()
-schema = StructType([
-    StructField("color", StringType()),
-    StructField("v1", DoubleType()),
-])
+# df.groupby('color').avg().show()
+# schema = StructType([
+#     StructField("color", StringType()),
+#     StructField("v1", DoubleType()),
+# ])
+
+
 df = df.withColumn('v', df.v1)
+df.show()
 schema = StructType([
     StructField("color", StringType()),
     StructField("fruit", StringType()),

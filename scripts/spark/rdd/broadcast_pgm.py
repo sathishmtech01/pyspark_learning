@@ -11,6 +11,7 @@ os.environ['SPARK_HOME'] = "/home/csk/sparkscala/spark-2.4.0-bin-hadoop2.6/"
 spark = SparkSession.builder.appName('broadcasttt').getOrCreate()
 
 states = {"NY":"New York", "CA":"California", "FL":"Florida"}
+
 broadcastStates = spark.sparkContext.broadcast(states)
 
 data = [("James","Smith","USA","CA"),
