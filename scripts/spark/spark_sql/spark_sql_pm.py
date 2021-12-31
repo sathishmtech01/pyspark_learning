@@ -36,6 +36,10 @@ print("Hello")
 df = spark.sql("SELECT * FROM parquet.`data/users.parquet`")
 df.show()
 
+print("hello")
+df = spark.sql("SELECT * FROM parquet.`spark-warehouse/people_partitioned/favorite_color=__HIVE_DEFAULT_PARTITION__/*.parquet`")
+df.show()
+print("hello")
 
 # df = spark.sql("SELECT * FROM parquet.`namesAndAges.parquet`")
 # df1 = spark.sql("SELECT * FROM parquet.`spark-warehouse/people_partitioned_bucketed_test/name=Andy/*.parquet`")
@@ -48,5 +52,4 @@ df.show()
 (df
     .write
     .partitionBy("favorite_color")
-    .bucketBy(2, "name")
-    .saveAsTable("people_partitioned_bucketed_2"))
+    .saveAsTable("people_partitioned"))

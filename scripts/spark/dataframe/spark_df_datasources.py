@@ -17,7 +17,8 @@ df.show()
 #df.select("name", "favorite_color").write.save("namesAndFavColors.parquet")
 
 # Manually Specifying Options
-df = spark.read.load("data/people.json", format="json")
+df = spark.read.load("data/customers.json", format="json")
+df.show()
 #df.select("name", "age").write.save("namesAndAges.parquet", format="parquet")
 
 
