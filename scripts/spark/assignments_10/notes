@@ -3,7 +3,7 @@ ETL using Pyspark
 Extract
 - Read input from different datasource - json,csv,parquet
 - from data structures - dataframe, array, others
-	
+
 Transform
 - Data preprocessing/cleaning
 - RDD - transformation - map,filter
@@ -12,56 +12,209 @@ Transform
 Load
 - Store as file
 - store to DB
-
 Need to explain a bit more
 
 
+Common assignment to all
+
+Demonstrate the spark streaming
+    - send
+        - from a terminal
+    - receive
+        - from spark streaming context
+        - a simple word count program
+
+Few highlights while writing code and presenting:
+    - proper variables to be used
+    - simple modularized code
+    - add proper comments
+    - make it understandable
+    - challenges faced
+        - errors and fixes
+
+All the Best! :)
+
 1. Telecom - churn data set
-	https://www.kaggle.com/blastchar/telco-customer-churn/codee	- 
-Load the data
-Data cleaning
-Exploratory data analysis
-Save analysis report 
- 
+
+i.Extract:  Load the data
+    - Read data as text file as RDD
+ii.Transform: Exploratory data analysis using rdd
+    - replace Contract column values
+        - Month-to-month -1m
+        - One Year - 1y
+        - Two Year - 2y
+        - rest all - Others
+    - Unique customer count
+    - describe the categorical and numerical columns seperately
+    - GroupBy contract and avg of totalcharges
+    - using accumulator add the totalcharges
+iii.Load: Save analysis report
+    - save as files
+
 2. Sales - analysis
-	https://www.kaggle.com/kyanyoga/sample-sales-data
-Load the data
-Data cleaning
-Exploratory data analysis
-Save analysis report 
+
+i.Extract:  Load the data
+    - Read data as pandas dataframe and then create spark dataframe
+ii.Transform: Exploratory data analysis using spark df
+    - Data preprocessing in spark df
+       replace blank/null/empty string values to "NA"
+       filter - country by USA
+       using broadcast replace state NY -> Newyork, CA -> California, and so on
+    - Unique order count
+    - calculate delivery_cost column from (orderquantity*price) - sales)
+    - GroupBy country and avg of prices,orderquantity
+iii.Load: Save analysis report
+    - save as files
 
 3. Entertainment - netflix shows analytics
-https://www.kaggle.com/shivamb/netflix-shows
+
+i.Extract:  Load the data
+   - Read data as pandas dataframe and
+     then create spark dataframe and
+      create a table view "netflix" as spark SQL
+ii.Transform: Exploratory data analysis using spark df
+    - Unique showId count
+    - GroupBy type,release_year and count of showId
+    - GroupBy Pclass and sum of Fare
+    - Update column duration values as 90 min to 90 and 2 seasons to 2 and others
+    - groupby type and avg durations
+iii.Load: Save analysis report
+    - save as tables - partitionby type
+
 
 4. Education-Campus recuritment
-https://www.kaggle.com/benroshan/factors-affecting-campus-placement?select=Placement_Data_Full_Class.csv
 
-5. Food 
-https://www.kaggle.com/borapajo/food-choices?select=food_coded.csv
+i.Extract:  Load the data
+   - Read data as json via spark dataframe
 
-6. Entertainment - movie 
-https://www.kaggle.com/ayushjain001/movie-dataset-rating
+ii.Transform: Exploratory data analysis using spark df
+    - Unique student count
+    - Replace - degree_t -> Sci&Tech to Btech and Comm&Mgmt to BBA
+    - create a new column : grade from mba_p
+        - A mba_p>80, B mba_p>60 <80, C mba_p>40 <60,D mba_p<40
+    - GroupBy gender and avg of salary
+    - min,max.mean - salary
+    - Count of placed and no placed
+iii.Load: Save analysis report
+    - GroupBy gender and avg of salary, save as files
 
-7. Amazon 
-https://www.kaggle.com/rishidamarla/amazoncom-fashion-products
+5. Food
+
+i.Extract:  Load the data
+   - Read data as csv via spark dataframe
+
+ii.Transform: Exploratory data analysis using spark df
+    - Unique records count
+    - select columns GPA	Gender	breakfast	calories_chicken	calories_day	calories_scone	coffee type_sports
+    - handling nan -> replace with 0 for numerical columns and Others in categorical columns
+    - Replace - Gender -> 1 to M and 2 to F
+    - Update : Normalize GPA column - normalized  v = v - min(GPA)/max(GPA)-min(GPA)
+    - show schema
+    - show all df
+    - GroupBy type_sport and sum of cofee
+
+iii.Load: Save analysis report
+    - show all df, save as files
+
+6. Entertainment - movie
+
+i.Extract:  Load the data
+   - Read data as csv via spark dataframe
+
+ii.Transform: Exploratory data analysis using spark df
+    - Unique id count
+    - split column release_date into three columns -> year,month and day
+    - Replace - month -> 1 to Jan and 2 to Feb and so on
+    - Update : Normalize popularity column - normalized  v = v - min(popularity)/max(popularity)-min(popularity)
+    - remove - overview and video column
+    - show df
+    - GroupBy vote_average and count
+
+iii.Load: Save analysis report
+    - show df, save as files
+
+7. Amazon - Ecommerce
+
+i.Extract:  Load the data
+   - Read data as csv via spark dataframe
+
+ii.Transform: Exploratory data analysis using spark df
+    - Unique uniq_id count
+    - format change in below columns
+        price from £3.42 to 3.42
+    - create column rating
+       transform average_review_rating from 4.9 out of 5 stars to ->4.9
+    - select columns uniq_id	product_name	manufacturer	price	number_available_in_stock	number_of_reviews	number_of_answered_questions	average_review_rating	amazon_category_and_sub_category ratings
+    - format column amazon_category_and_sub_category (last element) from ---> Hobbies > Model Trains & Railway Sets > Rail Vehicles > Trains to Trains
+    - show df
+    - GroupBy amazon_category_and_sub_category and count
+
+iii.Load: Save analysis report
+    - show df, save as files
 
 8. Articles
 
-The following tasks needs to be achieved while building a ML model
-shared for a task
-(i)  We need all the records in “Article_Description” and “Full_Article” to be cleaned.Remove the html tags
+i.Extract:  Load the data
+   - Read data as json via spark dataframe
 
-(ii) Merge the columns “Heading”, “Article_Description” and “Full_Article” separated by space and place the merged text in a new column name “Preprocessed_Text”
+ii.Transform: Exploratory data analysis using spark df
+    - Unique Id count
+    - Remove the html tags column “Article_Description” and “Full_Article”
+    - Merge the columns “Heading”, “Article_Description” and “Full_Article” separated by space and place the merged text in a new column name “Preprocessed_Text”
+    - select columns Id	Preprocessed_Text	Article_Type	Tonality
+    - new column outlet_tags based on outlet text with .com as website and rest as App
+    - show df
+    - GroupBy Article_Type, Tonality and count
 
-(iii) Remove stopwords and punctuation for all the records in the column  “Preprocessed_Text”
+iii.Load: Save analysis report
+    - show df, save as files
 
-(iv) Remove the leading or trailing whitespaces for all the records in the column  “Preprocessed_Text”
+9. RealEstate - Housing Data - rdd
+
+i.Extract:  Load the data
+   - Read data all csv as txt as  rdd
+
+ii.Transform: Exploratory data analysis using rdd
+    - Unique records count
+    - Extract full address from the column url*
+        - from http://www.zillow.com/homes/for_sale//homedetails/V-l-Buell-Newstead-NY-10001/2089629334_zpid/
+        - to V-l-Buell-Newstead-NY-10001
+    - Replace NA by zero in all numerical columns
+    - concat - bedrooms*, bathrooms* as bed_bath_rooms* 3b2bh
+    - GroupBy zip,bed_bath_rooms* and avg, max, min
+* given for reference
+
+iii.Load: Save analysis report
+    - GroupBy zip,bed_bath_rooms* and avg, max, min, save as files
+
+10. Titanic - db table
+
+i.Extract:  Load the data
+   - Read data as pandas dataframe and
+     then create spark dataframe and
+      create a table view "titanic" as spark SQL
+ii.Transform: Exploratory data analysis using spark df
+    - Unique passengerId count
+    - GroupBy sex and count of survived
+    - GroupBy Pclass and sum of Fare
+    - Update column age values as 1,2,3 ->child<10,teen>10 to <25,adult>25
+    - GroupBy age,Embarked,Pclass and count of survived
+iii.Load: Save analysis report
+    - save as tables - partitionby sex
 
 
-9. RealEstate - Housing Data
-collected via python script from zillow
+Disclaimer
+** There could be data errors as well, since taken from online.
+   Please correct by yourself if simple and report to me.
 
-10. Titanic - 
-have some link
-https://www.kaggle.com/jamesleslie/titanic-cleaned-data
-
+References:
+    https://www.kaggle.com/blastchar/telco-customer-churn/codee
+    https://www.kaggle.com/kyanyoga/sample-sales-data
+    https://www.kaggle.com/shivamb/netflix-shows
+    https://www.kaggle.com/benroshan/factors-affecting-campus-placement
+    https://www.kaggle.com/borapajo/food-choices
+    https://www.kaggle.com/ayushjain001/movie-dataset-rating
+    https://www.kaggle.com/rishidamarla/amazoncom-fashion-products
+    From a interview process source
+    collected via python script from zillow
+    not correct - https://www.kaggle.com/jamesleslie/titanic-cleaned-data
