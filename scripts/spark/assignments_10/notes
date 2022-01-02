@@ -14,6 +14,7 @@ Load
 - store to DB
 Need to explain a bit more
 
+Cloud computing team
 
 Common assignment to all
 
@@ -26,16 +27,20 @@ Demonstrate the spark streaming
 
 Few highlights while writing code and presenting:
     - proper variables to be used
+        a=10 wrong
     - simple modularized code
+        def remove_stopwords(text):
+            text.remove("is")
+            return text
     - add proper comments
-    - make it understandable
+        # comments for declartions, functions
+        - make it understandable
     - challenges faced
         - errors and fixes
 
 All the Best! :)
 
 1. Telecom - churn data set
-
 i.Extract:  Load the data
     - Read data as text file as RDD
 ii.Transform: Exploratory data analysis using rdd
@@ -49,7 +54,7 @@ ii.Transform: Exploratory data analysis using rdd
     - GroupBy contract and avg of totalcharges
     - using accumulator add the totalcharges
 iii.Load: Save analysis report
-    - save as files
+    - GroupBy contract and avg of totalcharges save as files
 
 2. Sales - analysis
 
@@ -61,10 +66,10 @@ ii.Transform: Exploratory data analysis using spark df
        filter - country by USA
        using broadcast replace state NY -> Newyork, CA -> California, and so on
     - Unique order count
-    - calculate delivery_cost column from (orderquantity*price) - sales)
-    - GroupBy country and avg of prices,orderquantity
+    - calculate delivery_cost column from (quantityordered*priceeach) - sales)
+    - GroupBy country and avg of priceeach,quantityordered
 iii.Load: Save analysis report
-    - save as files
+    - GroupBy country and avg of priceeach,quantityordered save as files
 
 3. Entertainment - netflix shows analytics
 
@@ -72,10 +77,9 @@ i.Extract:  Load the data
    - Read data as pandas dataframe and
      then create spark dataframe and
       create a table view "netflix" as spark SQL
-ii.Transform: Exploratory data analysis using spark df
+ii.Transform: Exploratory data analysis using spark sql queries
     - Unique showId count
     - GroupBy type,release_year and count of showId
-    - GroupBy Pclass and sum of Fare
     - Update column duration values as 90 min to 90 and 2 seasons to 2 and others
     - groupby type and avg durations
 iii.Load: Save analysis report
@@ -134,7 +138,7 @@ iii.Load: Save analysis report
     - show df, save as files
 
 7. Amazon - Ecommerce
-
+refer : *sample1000.csv
 i.Extract:  Load the data
    - Read data as csv via spark dataframe
 
@@ -161,7 +165,7 @@ ii.Transform: Exploratory data analysis using spark df
     - Unique Id count
     - Remove the html tags column “Article_Description” and “Full_Article”
     - Merge the columns “Heading”, “Article_Description” and “Full_Article” separated by space and place the merged text in a new column name “Preprocessed_Text”
-    - select columns Id	Preprocessed_Text	Article_Type	Tonality
+    - select columns :  Id	Preprocessed_Text	Article_Type	Tonality outlet
     - new column outlet_tags based on outlet text with .com as website and rest as App
     - show df
     - GroupBy Article_Type, Tonality and count
@@ -181,7 +185,7 @@ ii.Transform: Exploratory data analysis using rdd
         - to V-l-Buell-Newstead-NY-10001
     - Replace NA by zero in all numerical columns
     - concat - bedrooms*, bathrooms* as bed_bath_rooms* 3b2bh
-    - GroupBy zip,bed_bath_rooms* and avg, max, min
+    - GroupBy zip,bed_bath_rooms* and avg, max, min (price)
 * given for reference
 
 iii.Load: Save analysis report
@@ -218,3 +222,6 @@ References:
     From a interview process source
     collected via python script from zillow
     not correct - https://www.kaggle.com/jamesleslie/titanic-cleaned-data
+
+
+Submitting criteria -
