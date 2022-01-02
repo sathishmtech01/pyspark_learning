@@ -98,7 +98,7 @@ ii.Transform: Exploratory data analysis using spark df
         - A mba_p>80, B mba_p>60 <80, C mba_p>40 <60,D mba_p<40
     - GroupBy gender and avg of salary
     - min,max.mean - salary
-    - Count of placed and no placed
+    - from placed column -> Count of placed and not placed
 iii.Load: Save analysis report
     - GroupBy gender and avg of salary, save as files
 
