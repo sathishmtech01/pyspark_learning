@@ -86,7 +86,7 @@ iii.Load: Save analysis report
     - save as tables - partitionby type
 
 
-4. Education-Campus recuritment
+4. Education-Campus recuritment - done
 
 i.Extract:  Load the data
    - Read data as json via spark dataframe
@@ -156,7 +156,7 @@ ii.Transform: Exploratory data analysis using spark df
 iii.Load: Save analysis report
     - show df, save as files
 
-8. Articles
+8. Articles - done
 
 i.Extract:  Load the data
    - Read data as json via spark dataframe
